@@ -1,7 +1,5 @@
-ARG BASE
-
 # Base Image ##################################################################
-FROM $BASE as base
+FROM alpine as base
 
 RUN cat /etc/apk/repositories && \
     echo '@edge http://nl.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories && \
@@ -44,21 +42,3 @@ EXPOSE 30002/tcp
 EXPOSE 30005/tcp
 
 ENTRYPOINT ["tini", "--", "nice", "-n", "-5", "dump1090", "--net", "--net-bind-address", "0.0.0.0", "--debug", "n", "--mlat", "--net-heartbeat", "5", "--quiet", "--stats-every", "60"]
-
-# Metadata
-ARG MAINTAINER
-ARG NAME
-ARG DESCRIPTION
-ARG URL
-ARG BUILD_DATE
-ARG VCS_URL
-ARG VCS_REF
-
-LABEL maintainer="${MAINTAINER}" \
-  org.label-schema.build-date="${BUILD_DATE}" \
-  org.label-schema.name="${NAME}" \
-  org.label-schema.description="${DESCRIPTION}" \
-  org.label-schema.url="${URL}" \
-  org.label-schema.vcs-ref="${VCS_REF}" \
-  org.label-schema.vcs-url="${VCS_URL}" \
-  org.label-schema.schema-version="1.0"
