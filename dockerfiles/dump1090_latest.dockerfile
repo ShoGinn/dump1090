@@ -19,7 +19,7 @@ RUN apk add --no-cache \
 
 ARG DUMP1090_VERSION=v3.7.1
 ARG DUMP1090_GIT_HASH=40614778bc97a322c671c609f17a41f3eee3b194
-ARG DUMP1090_TAR_HASH=466434bdffe3a75475575251c511fecf7e967b99ada8a7c1900d8502a7c77b5c
+ARG DUMP1090_TAR_HASH=b63df996c5ffc6c30e8d4d0d70272794b70a044cb1aa4179108d283c14464e6b
 
 
 RUN curl -L --output 'dump1090-fa.tar.gz' "https://github.com/flightaware/dump1090/archive/${DUMP1090_GIT_HASH}.tar.gz" && \
