@@ -17,9 +17,9 @@ RUN apk add --no-cache \
         libc-dev librtlsdr-dev@testing libusb-dev ncurses-dev
 
 
-ARG DUMP1090_VERSION=v3.7.0.1
-ARG DUMP1090_GIT_HASH=883399cee3bc7e6c990b1b706537fa2673900696
-ARG DUMP1090_TAR_HASH=b21803c32d10a059122d1206f96592a94e4470717097c7cc5f07eb0cd9ea2646
+ARG DUMP1090_VERSION=v3.7.1
+ARG DUMP1090_GIT_HASH=40614778bc97a322c671c609f17a41f3eee3b194
+ARG DUMP1090_TAR_HASH=466434bdffe3a75475575251c511fecf7e967b99ada8a7c1900d8502a7c77b5c
 
 
 RUN curl -L --output 'dump1090-fa.tar.gz' "https://github.com/flightaware/dump1090/archive/${DUMP1090_GIT_HASH}.tar.gz" && \
