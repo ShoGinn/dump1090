@@ -1,0 +1,2 @@
+DOCKER_DESCRIPTION="Docker container for ADS-B - This is the flightaware dump1090 component"
+DOCKER_NAME="dump1090"
