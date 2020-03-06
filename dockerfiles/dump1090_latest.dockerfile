@@ -12,9 +12,9 @@ RUN cat /etc/apk/repositories && \
 FROM base as builder
 
 RUN apk add --no-cache \
-        curl ca-certificates \
-        coreutils make gcc pkgconf \
-        libc-dev librtlsdr-dev@testing libusb-dev ncurses-dev
+    curl ca-certificates \
+    coreutils make gcc pkgconf \
+    libc-dev librtlsdr-dev@testing libusb-dev ncurses-dev
 
 
 ARG DUMP1090_VERSION=v3.8.0
@@ -23,9 +23,8 @@ ARG DUMP1090_TAR_HASH=cf1320cbfe3cd2aa110ebf4ac86a12df7d1b9b1b1f7bca5c0f423c4d59
 
 RUN curl -L --output 'dump1090-fa.tar.gz' "https://github.com/flightaware/dump1090/archive/${DUMP1090_GIT_HASH}.tar.gz" && \
     sha256sum dump1090-fa.tar.gz && echo "${DUMP1090_TAR_HASH}  dump1090-fa.tar.gz" | sha256sum -c
-RUN mkdir dump1090 && cd dump1090 && \
-    tar -xvf ../dump1090-fa.tar.gz --strip-components=1
-WORKDIR dump1090
+WORKDIR /dump1090/
+RUN tar -xvf ../dump1090-fa.tar.gz --strip-components=1
 RUN make BLADERF=NO DUMP1090_VERSION="${DUMP1090_VERSION}"
 RUN make test
 
